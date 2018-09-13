@@ -12,7 +12,7 @@ The challenge provides a link to a site that upon visiting displayed:
 
 Since the challenge was titled Reference, we figured out it must be something to do with the referer header.
 Now the task was to find out what to set the referer to. This was easy as `index.js` directly gave it away. 
-![index.js](/indexJS.png)
+![index.js file](indexJS.png)
 
 Using Python's `requests` module, we set the referer to `http://google.com`.
 ```python
