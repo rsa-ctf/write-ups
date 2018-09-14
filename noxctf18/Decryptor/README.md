@@ -29,8 +29,8 @@ We first choose a random integer, say `x` and encrypt it.
 '0x36244f275b346c7b2ce5c04461cb4fb8bc8555b4d34d3c05e05a46ddd1866ffa05ce80b465661bb35d24852fb5134497a68298bc4714bb7f88b4d5b68fc46c637cce29b9f9c822c36d2872f92c49223adab141bc1e89cab07789b6f4bfe97b4fc35975683ec711d310de884106e7e6d191e38cee91fc07ef2ded80305006ff42L'
 ```
 
-We send the hex string to the server (without the `0x` and the `L` at the end and receive the decrypted hex string
->  2145551b48c3bbdcf95054a6466ce8e15ba628a)
+We send the hex string to the server (without the `0x` and the `L` at the end and receive the decrypted hex string)
+>  2145551b48c3bbdcf95054a6466ce8e15ba628a
 
 Now to get the plaintext corresponding to c, we need to multiply the returned number with x^-1 (x inverse modulo N).
 
