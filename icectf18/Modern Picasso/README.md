@@ -33,7 +33,7 @@ print(imgs.shape)
 
 There are a total of 67 frames of size 300x300 each.
 
-```
+```python
 imgsum = np.zeros((300,300))
 
 for i in range(67):
@@ -51,4 +51,4 @@ Looking at the combined image we see the flag.
 ## Flag
 > IceCTF{wow_fast}
 
-P.S There are definitely neater ways to solve this challenge. One of the write-ups suggested recreating the gif with transparent background instead of white, where you can see the flag materialise in front of you. Anyway, this is how I solved it.
+P.S There are definitely neater ways to solve this challenge. One of the [write-ups](https://github.com/shiltemann/CTF-writeups-public/blob/master/IceCTF-2018/writeup.md#forensics-150-modern-picasso) suggested recreating the gif with transparent background instead of white, where you can see the flag materialise in front of you. Anyway, this is how I solved it.
