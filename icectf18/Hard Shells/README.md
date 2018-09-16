@@ -35,7 +35,7 @@ $ file dat
 dat: data
 ```
 
-The `file` command checks the magic number which is the initial few bytes of each file to ascertain the file type, rather than looking at the file extension. Considering that it couldn'y identify the file type, I assume the magic numbers might be corrupt, so checked the initial few bytes in the hexdump.
+The `file` command checks the magic number which is the initial few bytes of each file to ascertain the file type, rather than looking at the file extension. Considering that it couldn't identify the file type, I assumed the magic number might be corrupt, so checked the initial few bytes in the hexdump.
 
 ```bash
 $ hexdump -C dat| head -5
@@ -48,7 +48,7 @@ $ hexdump -C dat| head -5
 
 We can see `IHDR`, `IDAT` tags. These are clearly tags found in a PNG file. The initial few bytes are supposed to read `PNG` but are corrupted here to `PUG`. 
 
-We update the initial hex values (you can use `hexedit`, `bless` or `vim` for this) to `89 50 4e 47 0a 0a 1a 0a` which is the PNG magic number.
+We update the initial hex values (you can use `hexedit`, `bless` or `vim` for this) to `89 50 4e 47 0d 0a 1a 0a` which is the PNG magic number.
 
 We can now view the `PNG` image which contains the flag.
 
