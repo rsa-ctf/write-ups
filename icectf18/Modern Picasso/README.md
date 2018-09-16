@@ -3,6 +3,7 @@
 **Author:** Kaushik S Kalmady
 
 We are presented with a GIF file.
+
 ![picasso](picasso.gif)
 
 First thing I observe is that tiny patches of pixels seem to appear at disjoint positions over the background. 
