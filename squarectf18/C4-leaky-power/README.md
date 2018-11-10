@@ -17,11 +17,11 @@ note: The first two files are NumPy arrays.
 note: there's a mistake in the way instructions.jwe was created (the algorithm is A128GCM, not A256GCM).
 ```
 
-This was a fun and annoying challenge. Fun because there was a lot learnt, annoying because the instructions.jwe was not encrypted properly by the organisers. They later uploaded the right file and the challenge was solved.
+This was a fun and annoying challenge. Fun because there was a lot learnt, annoying because the `instructions.jwe` was not encrypted properly by the organisers. They later uploaded the right file and the challenge was solved.
 
 Firstly, we are given two files which contain the plaintexts that were encrypted and the corresponding powertraces, i.e the power dissipation while encrypting those plaintexts.
 
-I had recently watched a video about Side Channel Attack using Power Analysis on RSA by liveoverflow. So it was clear to me that I had to perform the same attack here. There is also another video by liveoverflow on the same attack on AES where he uses the ChipWhisperer to obtain the key (check references below).
+I had recently watched a video about **Side Channel Attack using Power Analysis on RSA** by [liveoverflow](https://www.youtube.com/watch?v=bFfyROX7V0s). So it was clear to me that I had to perform the same attack here. There is also another video by liveoverflow on the same attack on AES where he uses the ChipWhisperer to obtain the key (check references below).
 
 The ChipWhisperer [Github Repo](https://github.com/newaetech/chipwhisperer) has example script to break aes using the Power Analysis Side Channel Attack. We will use the modified from of [this script](https://github.com/newaetech/chipwhisperer/blob/develop/software/scripting-examples/break_aes_manual.py) to obtain the flag.
 
@@ -36,7 +36,7 @@ You might want to read a bit about JWE and JWK at https://jwcrypto.readthedocs.i
 
 First we need to store the key in the JWK readable format. It expects the key to be in base64 encoding and stored as json with some addition information.
 
-```
+```python
 >>> import base64
 >>> base64.b64encode("d2dea057d1145f456796966024a703b2".decode("hex"))
 '0t6gV9EUX0VnlpZgJKcDsg=='
@@ -44,13 +44,13 @@ First we need to store the key in the JWK readable format. It expects the key to
 
 As per JWK standards our key object should look like this.
 
-```
+```json
 {"k":"0t6gV9EUX0VnlpZgJKcDsg==", "kty":"oct"}
 ```
 
 We save this in `key.txt`.
 
-The following code performs he decryption.
+The following code performs the decryption.
 
 ```python
 from jwcrypto import jwk, jwe
@@ -59,15 +59,15 @@ import json
 with open("key.txt") as f:
     mykey = json.load(f)
 
-    key = jwk.JWK(**mykey)
+key = jwk.JWK(**mykey)
 
-    with open("instructions_corrected.jwe") as f:
-        enc = f.read()
+with open("instructions_corrected.jwe") as f:
+    enc = f.read()
 
-        jwetoken = jwe.JWE()
-        jwetoken.deserialize(enc)
-        jwetoken.decrypt(key)
-        print jwetoken.plaintext
+jwetoken = jwe.JWE()
+jwetoken.deserialize(enc)
+jwetoken.decrypt(key)
+print jwetoken.plaintext
 ```
 
 Running this we get the corresponding plaintext.
