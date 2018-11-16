@@ -30,7 +30,16 @@ I installed ghostscript which is a postscript interpreter. Next I added some deb
  (\n) print
 ```
 
-This is present in the ![postfuscator-modified.sh](postfuscator-modified.sh) file. Running this script with any arbitrary input should now prints the buffer contents. 
+This is present in the [postfuscator-modified.sh](postfuscator-modified.sh) file. Running this script with any arbitrary input should now prints the buffer contents. 
+
+```bash
+$ ./postfuscator-modified.sh # Enter arbitrary key when prompted
+$ ghostscript postfuscator.ps
+GPL Ghostscript 9.25 (2018-09-13)
+Copyright (C) 2018 Artifex Software, Inc.  All rights reserved.
+This software comes with NO WARRANTY: see the file PUBLIC for details.
+buf = 1712009367807218646859018292134521568805686127287089876612468382748236461208592688982686121828975882178245515674851882
+```
 
 Now examining the code further and checking the values of `i` and `c` it was clear that our initial interpretation of the input being xored was indeed right. 
 
