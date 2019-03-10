@@ -10,4 +10,4 @@ Write-ups of various CTF challenges solved by us as part of the ReasonablySuspic
   - [@hehaichi](https://github.com/hehaichi)
   - [@kaushiksk](https://github.com/kaushiksk)
   - [@SwathiSBhat](https://github.com/SwathiSBhat)
-
+  - [@Hrily](https://github.com/Hrily)
