@@ -79,13 +79,15 @@ We now have to solve the system `A*x = b mod 26` for every pair `(x1, x2)` that 
 ### Solution
 We didn't answer one important thing in the previous section. How do we know where the text `pctf` occurs? 
 
-Truth is we don't. It could be anywhere in the text - so we run the above exploit for every 4 letter set in the text with a sliding window with stride 2. We print the corresponding probable flag assuming that `pctf` occurs at index i in the text and check all the output. Since the data is pretty small this doesn't take too long.
+Truth is we don't. It could be anywhere in the text - so we run the above exploit for every 4 letter set in the text with a sliding window with stride 2. We print the corresponding probable flag assuming that `pctf` occurs at index `i` in the text and check the corresponding output. Since the data is pretty small this doesn't take too long.
 
 I used `Sagemath` to solve the system of equations under mod 26. I'm not aware of any python module that can do this (Sagemath is awesome).
 
 Here is the complete solution script:
 ```python
-mport binascii
+#!/usr/bin/env sage -python
+
+import binascii
 from sage.all import *
 
 R = IntegerModRing(26)
@@ -146,7 +148,7 @@ while i <= (l - 4):
 
 ```
 
-Most of the systems wont be solvable and will be skipped. Some of the systems will output some text. The flag is obtained when `i = 38` : `ilikeclimbinghillswhataboutyou`
+Most of the systems won't be solvable and will be skipped. Some of the systems will output some text. The flag is obtained when `i = 38` : `ilikeclimbinghillswhataboutyou`
 
 ## Flag
 > pctf{ilikeclimbinghillswhataboutyou}

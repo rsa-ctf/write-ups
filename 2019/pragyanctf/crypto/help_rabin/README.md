@@ -76,7 +76,7 @@ Let's bring the sirens to the forefront now. I metioned earlier that it was a te
 This is important because now we can decrypt the ciphertext with the knowledge of `p` and `q`. The Wikipedia article from Rabin Cryptoystem contains the algorithm for decryption when `p` and `q` are known. I just had to implement it and we get the flag.
 
 ### Solution
-```
+```python
 import gmpy2
 from Crypto.Util.number import *
 
